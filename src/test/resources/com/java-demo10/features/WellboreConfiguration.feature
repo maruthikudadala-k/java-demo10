@@ -17,4 +17,14 @@ Scenario Outline: Chemical, Proppant, Email & Delivery Setup for Job Stages
     | Chemicals              |
     | Proppants              |
     | Vendor Email Setup     |
-    | Chemical Delivery Tracking |
+    | Chemical Delivery Tracking |@jwt-authentication
+Scenario Outline: PadService Authentication with JWT
+  Given the user has a valid JWT token
+  When the PAD-Service processes the JWT token
+  And it retrieves user roles and permissions from the external user information API
+  Then the user roles and permissions should be accurately mapped for the request
+
+  Examples:
+    | jwt_token                 |
+    | valid.jwt.token.here     |
+    | another.valid.jwt.token   |
