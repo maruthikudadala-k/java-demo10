@@ -6345,3 +6345,932 @@ Scenario Outline: Login Screen for Recruiters
   Examples:
     | email                | password           |
     | krishna@gmail.com    | ValidPassword123   |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And recruiter-specific features are visible and accessible
+  And I click on the candidate search feature
+  Then the candidate search functionality works as expected
+
+  Examples:
+    | email                 | password          |
+    | krishna@gmail.com     | ValidPassword123   |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter a valid email ID "<email>"
+  And I enter a valid password "<password>"
+  And I observe the state of the Login button
+  Then the Login button should be enabled
+  When I click the Login button
+  Then the page should respond after clicking the Login button
+  And I verify the URL of the redirected page
+  And I check for the presence of the dashboard elements
+
+  Examples:
+    | email               | password          |
+    | krishna@gmail.com   | ValidPassword123   |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<emailID>"
+  And I enter "<password>"
+  And I check the 'Remember Me' option
+  And I click the Login button
+  Then the system processes the login request
+  And I log out of the application
+  And I navigate back to the login screen
+  Then the Email ID field is pre-filled with "<emailID>"
+
+  Examples:
+    | emailID              | password            |
+    | recruiter@example.com | SecurePassword123   |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the 'Show Password' option
+  And I click the Login button
+  Then the user should be redirected to the dashboard
+
+  Examples:
+    | email_id            | password           |
+    | krishna@gmail.com   | SecurePassword123   |
+@validate_recruiter_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I navigate to a different page within the application
+  And I return to the dashboard
+  Then the dashboard elements are visible and the user is still logged in
+
+  Examples:
+    | email_id              | password             |
+    | recruiter@example.com  | SecurePassword123    |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the page response should be observed
+  And the dashboard features should be visible
+  And I click on a job posting
+  Then the job posting details should be displayed correctly
+
+  Examples:
+    | email_id              | password           |
+    | recruiter@example.com | SecurePassword123  |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the roles option on the dashboard
+  Then the roles page is displayed correctly
+  And the roles options are relevant and accessible
+
+  Examples:
+    | email_id              | password          |
+    | recruiter@example.com  | SecurePassword123  |
+@successful_login_logout
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click the Logout button on the dashboard
+  Then the user is redirected to the Login Screen
+
+  Examples:
+    | email             | password         |
+    | krishna@gmail.com | validPassword123 |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<emailID>" in the Email ID field
+  And I enter "<password>" in the Password field
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the help icon on the dashboard
+  Then the help resources page is displayed correctly
+  And the help resources are relevant and accessible
+
+  Examples:
+    | emailID              | password          |
+    | krishna@gmail.com    | validPassword123   |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the activity log option on the dashboard
+  Then the activity log page is displayed
+  And the activity log entries are relevant and accurate
+
+  Examples:
+    | email                  | password            |
+    | recruiter@example.com  | SecurePassword123   |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the permissions option on the dashboard
+  Then the permissions page is displayed correctly
+  And the permissions options are relevant and accessible
+
+  Examples:
+    | email                 | password          |
+    | krishna@gmail.com     | ValidPassword123  |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the settings option on the dashboard
+  Then the settings page is displayed correctly
+
+  Examples:
+    | email                | password          |
+    | krishna@gmail.com    | ValidPassword123  |
+@valid-recruiter-login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the profile option on the dashboard
+  Then the profile page is displayed correctly
+  And the profile information is relevant and accurate
+
+  Examples:
+    | email              | password          |
+    | krishna@gmail.com  | ValidPassword123  |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the notifications icon on the dashboard
+  Then the notifications panel is displayed
+  And the notifications are relevant and up-to-date
+
+  Examples:
+    | email_id                | password          |
+    | recruiter@example.com   | SecurePassword123  |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the profile settings option on the dashboard
+  Then the profile settings page is displayed correctly
+  And the user's information is displayed accurately
+
+  Examples:
+    | email                | password          |
+    | krishna@gmail.com    | ValidPassword123  |
+@valid-login-recruiters
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the roles option on the dashboard
+  Then the roles page is displayed
+  And the roles options are relevant and accessible
+
+  Examples:
+    | email_id            | password          |
+    | recruiter@example.com | SecurePassword123 |
+@valid-login-recruiter
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the preferences option on the dashboard
+  Then the preferences page is displayed correctly
+  And the preferences options are relevant and accessible
+
+  Examples:
+    | email               | password           |
+    | krishna@gmail.com   | SecurePassword123   |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the permissions option on the dashboard
+  Then the permissions page is displayed correctly
+  And the permissions options are relevant and accessible
+
+  Examples:
+    | email               | password          |
+    | krishna@gmail.com   | ValidPassword123  |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the settings option on the dashboard
+  Then the settings page is displayed correctly
+  And the settings options are relevant and accessible
+
+  Examples:
+    | email               | password          |
+    | krishna@gmail.com   | ValidPassword123  |
+@validate_show_hide_password
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<password1>" in the Password field
+  And I click the 'Show Password' option
+  Then the password should be visible
+  When I click the 'Hide Password' option
+  Then the password should not be visible
+  When I enter "<password2>" in the Password field
+  And I click the 'Show Password' option
+  Then the new password should be visible
+
+  Examples:
+    | password1            | password2            |
+    | ValidPassword123!    | ValidPassword456!    |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the profile option on the dashboard
+  Then the profile page is displayed correctly
+  And the profile information is displayed accurately
+
+  Examples:
+    | email                 | password         |
+    | krishna@gmail.com     | ValidPassword123  |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the notifications option on the dashboard
+  Then the notifications page is displayed correctly
+  And the notifications options are relevant and accessible
+
+  Examples:
+    | email                   | password          |
+    | recruiter@example.com   | SecurePassword123  |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the feedback option on the dashboard
+  Then the feedback form is displayed correctly
+  And the feedback options are relevant and accessible
+
+  Examples:
+    | email               | password          |
+    | krishna@gmail.com   | ValidPassword123  |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the settings icon on the dashboard
+  Then the settings page is displayed correctly
+  And the settings options are relevant and accessible
+
+  Examples:
+    | email_id            | password          |
+    | krishna@gmail.com   | ValidPassword123  |
+@valid-recruiter-login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the activity log option on the dashboard
+  Then the activity log page is displayed correctly
+  And the activity log entries are relevant and accurate
+
+  Examples:
+    | email                   | password            |
+    | recruiter@example.com   | SecurePassword123   |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the permissions option on the dashboard
+  Then the permissions page is displayed correctly
+  And the permissions options are relevant and accessible
+
+  Examples:
+    | email               | password          |
+    | krishna@gmail.com   | ValidPassword123   |
+@valid_login_recruiter
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the roles option on the dashboard
+  Then the roles page is displayed correctly
+  And the roles options are relevant and accessible
+
+  Examples:
+    | email_id              | password          |
+    | recruiter@example.com  | SecurePassword123  |
+@valid_recruiter_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the profile option on the dashboard
+  Then the profile page is displayed correctly
+  And the profile information is displayed accurately
+
+  Examples:
+    | email_id              | password           |
+    | krishna@gmail.com     | ValidPassword123   |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  When I enter a valid email ID "<email>"
+  And I enter a valid password "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the feedback option on the dashboard
+  Then the feedback form is displayed
+  And the feedback options are relevant and accessible
+
+  Examples:
+    | email             | password          |
+    | krishna@gmail.com | ValidPassword123  |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  And I observe the page response after clicking the Login button
+  And I click on the settings option on the dashboard
+  Then the settings page should be displayed
+  And the settings options should be relevant and accessible
+
+  Examples:
+    | email                | password          |
+    | krishna@gmail.com    | ValidPassword123  |
+@valid-login-recruiter
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the notifications option on the dashboard
+  Then the notifications page is displayed
+  And the notifications options are relevant and accessible
+
+  Examples:
+    | email_id               | password           |
+    | recruiter@example.com  | SecurePassword123  |
+@valid_recruiter_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the roles option on the dashboard
+  Then the roles page is displayed correctly
+  And the roles options are relevant and accessible
+
+  Examples:
+    | email                    | password              |
+    | recruiter@example.com    | SecurePassword123     |
+@valid_recruiter_login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the preferences option on the dashboard
+  Then the preferences page is displayed correctly
+  And the preferences options are relevant and accessible
+
+  Examples:
+    | email              | password            |
+    | krishna@gmail.com  | SecurePassword123   |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the feedback option on the dashboard
+  Then the feedback form is displayed
+  And the feedback options are relevant and accessible
+
+  Examples:
+    | email               | password           |
+    | krishna@gmail.com   | ValidPassword123   |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>" in the Email ID field
+  And I enter "<password>" in the Password field
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the notifications option on the dashboard
+  Then the notifications page is displayed
+  And the notifications options are relevant and accessible
+
+  Examples:
+    | email                   | password           |
+    | recruiter@example.com   | SecurePassword123   |
+@valid-recruiter-login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  When I click on the permissions option on the dashboard
+  Then the permissions page is displayed correctly
+  And the permissions options are relevant and accessible
+
+  Examples:
+    | email              | password          |
+    | krishna@gmail.com  | ValidPassword123  |
+@successful_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<emailID>"
+  And I enter "<password>"
+  And the user clicks the Login button
+  Then the system processes the login request
+  And the user clicks on the preferences option on the dashboard
+  Then the preferences page is displayed correctly
+
+  Examples:
+    | emailID          | password           |
+    | krishna@gmail.com | SecurePassword123  |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the activity log option on the dashboard
+  Then the activity log page is displayed correctly
+  And the activity log entries are relevant and accurate
+
+  Examples:
+    | email_id              | password           |
+    | recruiter@example.com  | SecurePassword123   |
+@valid-login-feedback
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the feedback option on the dashboard
+  Then the feedback form is displayed
+  And the feedback options are relevant and accessible
+
+  Examples:
+    | email               | password          |
+    | krishna@gmail.com   | ValidPassword123  |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email_id>" in the Email ID field
+  And I enter "<password>" in the Password field
+  And I click the Login button
+  Then the system should process the login request
+  And I click on the activity log option on the dashboard
+  Then the activity log page should be displayed
+  And the activity log entries should be relevant and accurate
+
+  Examples:
+    | email_id               | password           |
+    | recruiter@example.com   | SecurePassword123   |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the preferences option on the dashboard
+  Then the preferences page is displayed correctly
+  And the preferences options are relevant and accessible
+
+  Examples:
+    | email               | password            |
+    | krishna@gmail.com   | SecurePassword123   |
+@valid_recruiter_login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the preferences option on the dashboard
+  Then the preferences page is displayed correctly
+  And the preferences options are relevant and accessible
+
+  Examples:
+    | email_id           | password           |
+    | krishna@gmail.com  | SecurePassword123  |
+@successful-login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the notifications option on the dashboard
+  Then the notifications page is displayed
+  
+  Examples:
+    | email_id               | password           |
+    | recruiter@example.com   | SecurePassword123   |
+@valid_login_recruiter
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And the user clicks on the settings option on the dashboard
+  Then the settings page is displayed correctly
+  And the settings options are relevant and accessible
+
+  Examples:
+    | email                 | password         |
+    | krishna@gmail.com     | ValidPassword123  |
+@valid-login-and-reset
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>" in the Email ID field
+  And I enter "<password>" in the Password field
+  And the user clicks the Login button
+  Then the system processes the login request
+  When the user clicks on the 'Forgot Password?' link
+  And I enter "<reset_email_id>" for password reset
+  Then the password reset request is submitted successfully
+
+  Examples:
+    | email_id                | password          | reset_email_id         |
+    | recruiter@example.com    | ValidPassword123  | recruiter@example.com   |
+@valid_login_recruiter
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the roles option on the dashboard
+  Then the roles page is displayed correctly
+  And the roles options are relevant and accessible
+
+  Examples:
+    | email                     | password              |
+    | recruiter@example.com     | SecurePassword123     |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the notifications option on the dashboard
+  Then the notifications page is displayed correctly
+  And the notifications options are relevant and accessible
+
+  Examples:
+    | email_id               | password           |
+    | recruiter@example.com   | SecurePassword123  |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the settings option on the dashboard
+  Then the settings page is displayed correctly
+
+  Examples:
+    | email              | password          |
+    | krishna@gmail.com  | ValidPassword123  |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the activity log option on the dashboard
+  Then the activity log page is displayed correctly
+  And the activity log entries are relevant and accurate
+
+  Examples:
+    | email_id               | password            |
+    | recruiter@example.com   | SecurePassword123    |
+@valid_recruiter_login
+Scenario Outline: Login Screen for Recruiters
+  Given the recruiter is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the permissions option on the dashboard
+  Then the permissions page is displayed correctly
+  And the permissions options are relevant and accessible
+
+  Examples:
+    | email_id           | password          |
+    | krishna@gmail.com  | ValidPassword123  |
+@valid-login-recruiter
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the roles option on the dashboard
+  Then the roles page is displayed
+  And the roles options are relevant and accessible
+
+  Examples:
+    | email_id              | password           |
+    | recruiter@example.com  | SecurePassword123  |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And the user clicks the Login button
+  Then the system processes the login request
+  And the user clicks on the notifications option on the dashboard
+  Then the notifications page is displayed correctly
+  And the notifications options are relevant and accessible
+
+  Examples:
+    | email_id             | password            |
+    | recruiter@example.com | SecurePassword123   |
+@valid_recruiter_login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the activity log option on the dashboard
+  Then the activity log page is displayed correctly
+  And the activity log entries are relevant and accurate
+
+  Examples:
+    | email                   | password            |
+    | recruiter@example.com   | SecurePassword123   |
+@valid_login_recruiter
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the settings option on the dashboard
+  Then the settings page is displayed correctly
+
+  Examples:
+    | email                | password           |
+    | krishna@gmail.com    | ValidPassword123   |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And the user clicks on the profile option on the dashboard
+  Then the profile page is displayed correctly
+  And the profile information is displayed accurately
+
+  Examples:
+    | email               | password          |
+    | krishna@gmail.com   | ValidPassword123  |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And the user clicks on the feedback option on the dashboard
+  Then the feedback form is displayed correctly
+
+  Examples:
+    | email                | password          |
+    | krishna@gmail.com    | ValidPassword123  |
+@valid_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the feedback option on the dashboard
+  Then the feedback form is displayed
+
+  Examples:
+    | email              | password         |
+    | krishna@gmail.com  | ValidPassword123  |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email_id>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the permissions option on the dashboard
+  Then the permissions page is displayed correctly
+
+  Examples:
+    | email_id           | password          |
+    | krishna@gmail.com  | ValidPassword123  |
+@valid_recruiter_login
+Scenario Outline: Login Screen for Recruiters
+  Given the recruiter is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the permissions option on the dashboard
+  Then the permissions page is displayed correctly
+  And the permissions options are relevant and accessible
+
+  Examples:
+    | email                 | password           |
+    | krishna@gmail.com     | ValidPassword123   |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the notifications option on the dashboard
+  Then the notifications page is displayed correctly
+  And the notifications options are relevant and accessible
+
+  Examples:
+    | email                   | password           |
+    | recruiter@example.com   | SecurePassword123   |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the roles option on the dashboard
+  Then the roles page is displayed correctly
+  And the roles options are relevant and accessible
+
+  Examples:
+    | email                    | password           |
+    | recruiter@example.com    | SecurePassword123   |
+@valid-login-recruiter
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the activity log option on the dashboard
+  Then the activity log page is displayed correctly
+  And the activity log entries are relevant and accurate
+
+  Examples:
+    | email                   | password             |
+    | recruiter@example.com   | SecurePassword123    |
+@valid-login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And the user clicks the Login button
+  Then the system processes the login request
+  And the user clicks on the settings option on the dashboard
+  Then the settings page is displayed correctly
+  And the settings options are relevant and accessible
+
+  Examples:
+    | email             | password          |
+    | krishna@gmail.com | ValidPassword123  |
+@active_session
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the page should respond after clicking the Login button
+  And the user remains active on the dashboard for an extended period
+  And the user performs various actions on the dashboard
+  Then the user is still logged in after the period
+
+  Examples:
+    | email                | password          |
+    | krishna@gmail.com    | ValidPassword123  |
+@successful-login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the feedback option on the dashboard
+  Then the feedback form is displayed correctly
+
+  Examples:
+    | email              | password          |
+    | krishna@gmail.com  | ValidPassword123  |
+@valid_login_recruiter
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the preferences option on the dashboard
+  Then the preferences page is displayed correctly
+  And the preferences options are relevant and accessible
+
+  Examples:
+    | email                | password            |
+    | krishna@gmail.com    | SecurePassword123    |
+@valid_recruiter_login
+Scenario Outline: Login Screen for Recruiters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then I should see the page response
+  When I click on the preferences option on the dashboard
+  Then I should see the preferences page
+  And the preferences options should be relevant and accessible
+
+  Examples:
+    | email                | password            |
+    | krishna@gmail.com    | SecurePassword123   |
+@valid_recruiter_login
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the profile option on the dashboard
+  Then the profile page is displayed correctly
+  And the profile information is displayed accurately
+
+  Examples:
+    | email                | password          |
+    | krishna@gmail.com    | ValidPassword123   |
+@valid_login_recruiter
+Scenario Outline: Login Screen for Recruiters
+  Given the user is on the Login Screen
+  When I enter "<email>"
+  And I enter "<password>"
+  And I click the Login button
+  Then the system processes the login request
+  And I click on the profile option on the dashboard
+  Then the profile page is displayed correctly
+
+  Examples:
+    | email                | password          |
+    | krishna@gmail.com    | ValidPassword123   |
