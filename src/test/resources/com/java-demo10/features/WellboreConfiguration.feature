@@ -28,3 +28,15 @@ Scenario Outline: PadService Authentication with JWT
     | jwt_token                 |
     | valid.jwt.token.here     |
     | another.valid.jwt.token   |
+@configuration_setup
+Scenario Outline: Chemical, Proppant, Email & Delivery Setup for Job Stages
+  When the user enters the Chemical information
+  And the user enters the Proppant information
+  And the user sets up the Vendor Email
+  And the user configures the Chemical Delivery Tracking
+  Then the all required input data is properly added, saved, and tracked throughout the job lifecycle
+
+  Examples:
+    | Chemical            | Proppant         | Vendor Email          |
+    | Chemical A         | Proppant X      | vendor@example.com    |
+    | Chemical B         | Proppant Y      | vendor2@example.com   |
