@@ -53,3 +53,17 @@ Scenario Outline: Chemical, Proppant, Email & Delivery Setup for Job Stages
     | Job Stage     |
     | Completion    |
     | Fracturing    |
+@chemical_proppant_setup
+Scenario Outline: Chemical, Proppant, Email & Delivery Setup for Job Stages
+  Given the user selects the job "<job>"
+  And the user selects the stage "<stage>"
+  When the user configures the chemicals as "<chemicals>"
+  And the user adds proppants as "<proppants>"
+  And the user sets up vendor email as "<vendor_email>"
+  And the user configures chemical delivery tracking as "<delivery_tracking>"
+  Then the user should receive a confirmation that the setup has been saved
+
+  Examples:
+    | job      | stage        | chemicals          | proppants       | vendor_email        | delivery_tracking  |
+    | Job001   | StageA      | ChemicalA, ChemicalB | ProppantA     | vendor@example.com   | Yes                |
+    | Job002   | StageB      | ChemicalC           | ProppantB     | vendor2@example.com  | No                 |
