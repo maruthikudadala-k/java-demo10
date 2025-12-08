@@ -81,3 +81,16 @@ Scenario Outline: Chemical, Proppant, Email & Delivery Setup for Job Stages
     | chemical_details  | proppant_details | vendor_email       | delivery_tracking     |
     | Water and Sand    | 50 Mesh Sand     | vendor@example.com  | Track123              |
     | Acid and Polymer   | 100 Mesh Sand    | vendor2@example.com | Track456              |
+@setup_job_stages
+Scenario Outline: Chemical, Proppant, Email & Delivery Setup for Job Stages
+  Given the user selects the job stage
+  When the user configures the Chemicals
+  And the user configures the Proppants
+  And the user sets the Vendor Email
+  And the user configures Chemical Delivery Tracking
+  Then the user should see a confirmation message that the setup is complete
+
+  Examples:
+    | job_stage      |
+    | Job Stage 1   |
+    | Job Stage 2   |
