@@ -2094,3 +2094,667 @@ Scenario Outline: User Registration Process with Existing Email
   Examples:
     | email                         | password          | confirmPassword     |
     | existing_user@example.com     | ValidPass123!     | ValidPass123!      |
+@valid-registration
+Scenario Outline: User Registration Process
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password as "<confirmation>"
+  And I click the "Register" button
+  Then a success message should appear
+  And a confirmation email should be received in the inbox
+  When I log in using "<email>" and "<password>"
+  Then the user should be successfully logged in to the platform
+
+  Examples:
+    | email               | password            | confirmation        |
+    | krishna@gmail.com   | ValidPassword123    | ValidPassword123     |
+@valid-registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When the user enters "<email>"
+  And the user enters "<password>"
+  And the user confirms the password "<confirmation_password>"
+  And the user clicks the "Register" button
+  Then the user should see a success message
+  And the user should receive a confirmation email
+  And the user logs in using "<email>"
+
+  Examples:
+    | email               | password              | confirmation_password   |
+    | krishna@gmail.com   | ValidPassword123!     | ValidPassword123!       |
+@valid-email-uppercase
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password with "<confirmation>"
+  And the user clicks the Register button
+  Then a success message should be displayed
+  And the user should receive a confirmation email in the inbox
+  And the user logs in using the newly created account
+
+  Examples:
+    | email               | password            | confirmation        |
+    | KRISHNA@GMAIL.COM  | ValidPassword123    | ValidPassword123     |
+@password_mismatch
+Scenario Outline: User Registration with Mismatched Passwords
+  Given the user is on the Registration Page
+  When I enter "<email>" in the email field
+  And I enter "<password>" in the password field
+  And I enter "<confirmation>" in the confirmation field
+  And I click the "Register" button
+  Then an error message should appear indicating password mismatch
+  And the account should not be created
+  And the user should remain on the Registration Page
+
+  Examples:
+    | email              | password            | confirmation         |
+    | krishna@gmail.com  | ValidPassword123    | DifferentPassword456  |
+@valid-registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When the user enters "<email>" in the email field
+  And the user enters "<password>" in the password field
+  And the user confirms the password in the confirmation field
+  And the user clicks the "Register" button
+  Then the user should see a success message on the screen
+  And the user should receive a confirmation email in the inbox
+  And the user logs in using the newly created account
+
+  Examples:
+    | email                   | password            |
+    | uniqueuser@example.com  | validpassword123   |
+@valid-email-plus-sign
+Scenario Outline: User Registration Process
+  When I enter "<email>" in the email field
+  And I enter "<password>" in the password field
+  And I enter "<confirmation>" in the confirmation field
+  And I click the "Register" button
+  Then a success message should appear
+  And a confirmation email should be received in the inbox
+  And the user should be able to log in using the newly created account
+
+  Examples:
+    | email                     | password             | confirmation        |
+    | krishna+test@gmail.com   | ValidPassword123     | ValidPassword123     |
+@valid-email-registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter "<email>" in the email field
+  And I enter "<password>" in the password field
+  And I enter "<confirmation_password>" in the confirmation field
+  And I click the "Register" button
+  Then a success message should appear
+  And a confirmation email should be received in the inbox
+  And the user logs in using the newly created account
+
+  Examples:
+    | email                   | password             | confirmation_password   |
+    | krishna@gmail.com      | ValidPassword123     | ValidPassword123        |
+@valid-email-registration
+Scenario Outline: User Registration Process with Valid Email Containing Numbers
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password "<confirmation>"
+  And the user clicks the Register button
+  Then a success message should appear
+  And a confirmation email should be received in the inbox
+  And the user can log in using the new account with email "<email>" and password "<password>"
+
+  Examples:
+    | email                | password            | confirmation          |
+    | user123@gmail.com   | ValidPassword123    | ValidPassword123       |
+@valid-registration
+Scenario Outline: User Registration Process
+  When I enter "<email>" in the email field
+  And I enter "<password>" in the password field
+  And I enter "<confirmation_password>" in the confirmation field
+  And I click the "Register" button
+  Then a success message should appear on the screen
+  And a confirmation email should be received in the inbox
+  And the user should be able to log in using the newly created account
+
+  Examples:
+    | email               | password            | confirmation_password  |
+    | krishna@gmail.com   | StrongPassword123!  | StrongPassword123!      |
+@valid-email-hyphen-registration
+Scenario Outline: User Registration Process with Valid Email Address Containing Hyphens
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password "<confirmation>"
+  And the user clicks the Register button
+  Then the user should see a success message
+  And the user should receive a confirmation email
+  And the user logs in using the registered account
+
+  Examples:
+    | email                      | password            | confirmation        |
+    | krishna-hyphen@gmail.com   | ValidPassword123    | ValidPassword123     |
+@valid-email-registration
+Scenario Outline: User Registration with Valid Email Containing Dots
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password "<confirmation>"
+  And I click the "Register" button
+  Then a success message should appear on the screen
+  And the user should receive a confirmation email in the inbox
+  And the user should be able to log in using the new account
+
+  Examples:
+    | email                   | password             | confirmation         |
+    | user.name@example.com   | SecurePassword123    | SecurePassword123     |
+@lowercase_email_registration
+Scenario Outline: User Registration Process
+  When I enter "<email>" in the email field
+  And I enter "<password>" in the password field
+  And I confirm the password with "<confirmation>"
+  And I click the "Register" button
+  Then the user should see a success message
+  And the user should receive a confirmation email
+  And I log in using the newly created account
+
+  Examples:
+    | email                | password              | confirmation        |
+    | krishna@gmail.com    | ValidPassword123      | ValidPassword123     |
+@valid_email_registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password "<confirmation>"
+  And the user clicks the "Register" button
+  Then a success message should appear
+  And a confirmation email should be received in the inbox
+  And the user logs in using the newly created account
+
+  Examples:
+    | email                     | password             | confirmation         |
+    | krishna_smith@gmail.com   | ValidPassword123     | ValidPassword123      |
+@valid-email-registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I enter "<confirmation>"
+  And the user clicks the "Register" button
+  Then a success message should appear
+  And a confirmation email should be received in the inbox
+  And the user logs in using the newly created account
+
+  Examples:
+    | email            | password  | confirmation |
+    | a@example.com    | Pass123   | Pass123      |
+    | b@test.com       | Admin321  | Admin321     |
+@long_username_registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter a valid email address "<email>"
+  And I enter a valid password "<password>"
+  And I confirm the password "<confirmation>"
+  And the user clicks the "Register" button
+  Then a success message should appear
+  And a confirmation email should be received in the inbox
+  And the user logs in using the newly created account
+
+  Examples:
+    | email                     | password              | confirmation          |
+    | longusername@example.com  | ValidPassword123!     | ValidPassword123!      |
+@valid-email-registration
+Scenario Outline: Validate Long Domain Name Email Registration
+  Given the user is on the Registration Page
+  When I enter a valid email address "<email>"
+  And I enter a valid password "<password>"
+  And I confirm the password "<confirmation>"
+  And I click the "Register" button
+  Then a success message should appear
+  And a confirmation email should be received in the inbox
+  And the user should be able to log in using the new account
+
+  Examples:
+    | email                     | password               | confirmation         |
+    | user@longdomainname.com   | ValidPassword123!      | ValidPassword123!     |
+@valid-registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the "<confirmation>"
+  And the user clicks the Register button
+  Then the user should see a success message
+  And the user should receive a confirmation email
+  And the user logs in using the newly created account
+
+  Examples:
+    | email                   | password            | confirmation         |
+    | user@mail.example.com   | ValidPassword123    | ValidPassword123      |
+@valid-email-registration
+Scenario Outline: User Registration Process
+  When I enter a valid email address "<email>"
+  And I enter a valid password "<password>"
+  And I confirm the password "<confirmation>"
+  And I click the "Register" button
+  Then a success message should appear
+  And a confirmation email should be received in the inbox
+  And the user should be logged in using the newly created account
+
+  Examples:
+    | email                   | password            | confirmation        |
+    | user123@123domain.com  | SecurePassword123   | SecurePassword123    |
+@valid_registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password with "<confirmation>"
+  And the user clicks the "Register" button
+  Then a success message should appear
+  And a confirmation email should be received in the inbox
+  And the user logs in using the newly created account
+  
+  Examples:
+    | email        | password            | confirmation        |
+    | user@a.com  | ValidPassword123    | ValidPassword123     |
+@valid-registration
+Scenario Outline: User Registration Process
+  When I enter a valid email address "<email>"
+  And I enter a valid password "<password>"
+  And I confirm the password "<confirmation_password>"
+  And I click the "Register" button
+  Then a success message should be displayed
+  And a confirmation email should be received in the inbox
+  And the user logs in using the newly created account
+
+  Examples:
+    | email                   | password               | confirmation_password     |
+    | user+test@gmail.com    | ValidPassword123!      | ValidPassword123!          |
+@valid-registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password "<confirmation>"
+  And I click the "Register" button
+  Then a success message should appear
+  And a confirmation email should be received
+  And the user should be able to log in with the new account
+
+  Examples:
+    | email                | password             | confirmation         |
+    | user!name@gmail.com  | ValidPassword123     | ValidPassword123      |
+@valid-email-registration
+Scenario Outline: User Registration Process with Consecutive Special Characters
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password "<confirmation>"
+  And I click the "Register" button
+  Then I should see a success message
+  And I verify a confirmation email is received
+  And I log in using the account with "<email>" and "<password>"
+
+  Examples:
+    | email                   | password              | confirmation          |
+    | user..name@gmail.com   | ValidPassword123!     | ValidPassword123!      |
+@valid-email-registration
+Scenario Outline: User Registration Process with Valid Email
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password "<confirmation>"
+  And I click the Register button
+  Then a success message should be displayed
+  And a confirmation email should be received in the inbox
+  And the user should be logged in with the account
+
+  Examples:
+    | email                | password             | confirmation           |
+    | user123@gmail.com   | ValidPassword123     | ValidPassword123       |
+@valid-email-registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter "<email>" in the email field
+  And I enter "<password>" in the password field
+  And I enter "<confirmation>" in the confirmation field
+  And I click the "Register" button
+  Then a success message should appear indicating account creation
+  And a confirmation email should be received in the inbox
+  And the user logs in using the newly created account
+
+  Examples:
+    | email                   | password              | confirmation          |
+    | user!name@domain.com   | ValidPassword123!     | ValidPassword123!      |
+@valid-registration
+Scenario Outline: User Registration Process
+  When I enter "<email>"
+  And I enter "<password>"
+  And I enter "<confirmation_password>"
+  And I click the "Register" button
+  Then a success message should appear
+  And a confirmation email should be received in the inbox
+  And the user should be able to log in with "<email>" and "<password>"
+
+  Examples:
+    | email                  | password            | confirmation_password  |
+    | " krishna@gmail.com "  | "validPassword123"  | "validPassword123"     |
+@valid-registration-mixed-case-email
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password with "<confirmation>"
+  And I click the "Register" button
+  Then a success message should appear
+  And a confirmation email should be received in the inbox
+  And the user logs in with "<email>" and "<password>"
+
+  Examples:
+    | email                    | password                | confirmation          |
+    | KrIsHnA@gmail.com       | ValidPassword123!       | ValidPassword123!      |
+@valid-email-registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password "<confirmation>"
+  And I click the "Register" button
+  Then a success message should be displayed
+  And a confirmation email should be received in the inbox
+  And the user should be able to log in using the newly created account
+
+  Examples:
+    | email            | password             | confirmation        |
+    | !@example.com    | ValidPassword123     | ValidPassword123     |
+@valid-email-registration
+Scenario Outline: User Registration Process
+  When I enter "<email>" in the email field
+  And I enter "<password>" in the password field
+  And I confirm "<confirmation>" in the confirmation field
+  And I click the "Register" button
+  Then a success message should appear indicating account creation
+  And a confirmation email should be received in the inbox
+  And the user logs in using the newly created account
+
+  Examples:
+    | email                | password            | confirmation        |
+    | krishna@gmail.co     | ValidPassword123    | ValidPassword123     |
+@empty_confirmation_password
+Scenario Outline: User Registration Process with Empty Confirmation Password
+  Given the user is on the Registration Page
+  When I enter "<email>" in the email field
+  And I enter "<password>" in the password field
+  And I leave the confirmation password field empty
+  And the user clicks the "Register" button
+  Then an error message appears indicating the confirmation password field is required
+  And the account is not created
+  And the user remains on the Registration Page
+
+  Examples:
+    | email               | password            |
+    | krishna@gmail.com   | ValidPassword123    |
+@valid-registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password "<confirmation_password>"
+  And I click the "Register" button
+  Then a success message should appear
+  And the user should receive a confirmation email
+  And the user logs in using the newly created account
+
+  Examples:
+    | email                | password             | confirmation_password   |
+    | krishna@gmail.com    | ValidPassword123!    | ValidPassword123!        |
+@invalid-password
+Scenario Outline: User Registration Process with Invalid Password
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password "<confirmation>"
+  And the user clicks the Register button
+  Then an error message should appear indicating the password does not meet complexity requirements
+  And the account is not created
+  And the user remains on the Registration Page
+
+  Examples:
+    | email              | password | confirmation |
+    | krishna@gmail.com  | 12345    | 12345        |
+@valid-registration
+Scenario Outline: User Registration Process
+  When I enter "<email>" in the email field
+  And I enter "<password>" in the password field
+  And I enter "<confirmation>" in the confirmation field
+  And I click the "Register" button
+  Then a success message should appear on the screen
+  And the user should receive a confirmation email in the inbox
+  And the user logs in using the newly created account
+
+  Examples:
+    | email      | password           | confirmation       |
+    | a@b.com   | ValidPassword123   | ValidPassword123    |
+@empty-email-error
+Scenario Outline: Verify system prevents registration with empty email field
+  Given the user is on the Registration Page
+  When I leave the email field empty
+  And I enter "<password>" in the password field
+  And I confirm the password with "<confirmation>"
+  And I click the "Register" button
+  Then an error message should appear indicating the email field is required
+  And the account should not be created
+  And the user should remain on the Registration Page
+
+  Examples:
+    | password            | confirmation        |
+    | ValidPassword123    | ValidPassword123     |
+@valid-generic-domain-registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter a valid email address "<email>"
+  And I enter a valid password "<password>"
+  And I confirm the password "<confirmation_password>"
+  And I click the "Register" button
+  Then a success message should appear
+  And a confirmation email should be received in the inbox
+  And the user logs in using the newly created account
+
+  Examples:
+    | email           | password            | confirmation_password |
+    | user@example    | ValidPassword123    | ValidPassword123       |
+@existing-email-error
+Scenario Outline: User Registration with Existing Email
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm "<confirmation>"
+  And the user clicks the Register button
+  Then an error message should appear indicating the email is already in use
+  And the account should not be created
+  And the user should remain on the Registration Page
+
+  Examples:
+    | email               | password            | confirmation       |
+    | krishna@gmail.com   | ValidPassword123    | ValidPassword123    |
+@invalid-email
+Scenario Outline: User Registration with Improperly Formatted Email Address
+  Given the user is on the Registration Page
+  When I enter "<email>" in the email field
+  And I enter "<password>" in the password field
+  And I enter "<confirmation>" in the confirmation field
+  And I click the Register button
+  Then an error message should be displayed indicating invalid email format
+  And the account should not be created
+  And the user should remain on the Registration Page
+
+  Examples:
+    | email     | password             | confirmation         |
+    | abc@      | ValidPassword123     | ValidPassword123      |
+@valid-registration-special-characters
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password "<confirmation>"
+  And I click the "Register" button
+  Then a success message should be displayed
+  And a confirmation email should be received in the inbox
+  And the user logs in using the newly created account
+
+  Examples:
+    | email                      | password               | confirmation            |
+    | a!@#$%^&*()_+[]{}|;':,.<>?~ | ValidPassword123!     | ValidPassword123!      |
+@password_mismatch
+Scenario Outline: User Registration Process with Password Mismatch
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I enter "<confirmation_password>"
+  And the user clicks the Register button
+  Then an error message should be displayed indicating password mismatch
+  And the account should not be created
+  And the user should remain on the Registration Page
+
+  Examples:
+    | email               | password             | confirmation_password    |
+    | krishna@gmail.com   | ValidPassword123     | DifferentPassword456     |
+@invalid-email-space
+Scenario Outline: User Registration Process with Email Containing Spaces
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I enter "<confirmation>"
+  And I click the "Register" button
+  Then an error message should appear
+  And the account should not be created
+  And the user should remain on the Registration Page
+
+  Examples:
+    | email            | password              | confirmation          |
+    | abc @gmail.com   | ValidPassword123      | ValidPassword123       |
+@empty-password
+Scenario Outline: User Registration Process with Empty Password
+  Given the user is on the Registration Page
+  When I enter a valid email address "<email>"
+  And I leave the password field empty
+  And I confirm the password in the confirmation field
+  And I click the "Register" button
+  Then an error message should appear indicating the password field is required
+  And the account should not be created
+  And the user should remain on the Registration Page
+
+  Examples:
+    | email             |
+    | krishna@gmail.com |
+@invalid-email-registration
+Scenario Outline: User Registration with Invalid Email Format
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password "<confirmation>"
+  And I click the Register button
+  Then an error message should appear indicating multiple "@" symbols are not allowed
+  And the account should not be created
+  And the user should remain on the Registration Page
+
+  Examples:
+    | email             | password              | confirmation         |
+    | abc@@example.com  | ValidPassword123!     | ValidPassword123!     |
+@maximum-length-password-registration
+Scenario Outline: User Registration Process with Maximum Length Password
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I confirm the password in the confirmation field
+  And I click the "Register" button
+  Then a success message should appear on the screen
+  And a confirmation email should be received in the inbox
+  And the user should be able to log in using the newly created account
+
+  Examples:
+    | email               | password      |
+    | krishna@gmail.com   | aaaaaaaaaaaa... [1000 times] |
+@valid-registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter "<email>" in the email field
+  And I enter "<password>" in the password field
+  And I enter "<confirmation_password>" in the confirmation field
+  And I click the "Register" button
+  Then a success message should appear
+  And a confirmation email should be received in the inbox
+  And I log in using the newly created account
+
+  Examples:
+    | email                | password                          | confirmation_password                |
+    | krishna@gmail.com    | <a repeated 1000 times>         | <a repeated 1000 times>             |
+@invalid-email
+Scenario Outline: User Registration with Invalid Email Address
+  Given the user is on the Registration Page
+  When I enter "<email>" in the email field
+  And I enter "<password>" in the password field
+  And I enter "<confirmation>" in the confirmation field
+  And the user clicks the "Register" button
+  Then an error message should appear indicating invalid characters in the email
+  And the account should not be created
+  And the user should remain on the Registration Page
+
+  Examples:
+    | email   | password             | confirmation        |
+    | abc@    | ValidPassword123!    | ValidPassword123!    |
+@registration_with_special_characters
+Scenario Outline: User Registration Process
+  When I enter "<email>" in the email field
+  And I enter "<password>" in the password field
+  And I enter "<confirmation>" in the confirmation field
+  And I click the "Register" button
+  Then a success message should be displayed
+  And the user should receive a confirmation email in the inbox
+  And the user logs in using the newly created account
+
+  Examples:
+    | email               | password             | confirmation       |
+    | user!@example.com   | ValidPassword123     | ValidPassword123    |
+@concurrent_registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter "<email>" in the email field
+  And I enter "<password>" in the password field
+  And I confirm the password in the confirmation field
+  And I click the "Register" button in Browser 1
+  And I click the "Register" button in Browser 2
+  Then I should see a success message in Browser 1
+  And I should see an error message in Browser 2
+  And only one account should be created in the database
+  And I log in using the newly created account
+
+  Examples:
+    | email             | password            | confirmation         |
+    | krishna@gmail.com | ValidPassword123    | ValidPassword123      |
+@valid-registration
+Scenario Outline: User Registration Process
+  Given the user is on the Registration Page
+  When I enter "<email>" in the email field
+  And I enter "<password>" in the password field
+  And I confirm the password with "<confirmation>"
+  And the user clicks the Register button
+  Then a success message should be displayed
+  And a confirmation email should be received in the inbox
+  And the user should be able to log in using the newly created account
+
+  Examples:
+    | email                             | password              | confirmation         |
+    | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | ValidPassword123! | ValidPassword123! |
+@invalid-email-domain
+Scenario Outline: User Registration with Invalid Email Domain
+  Given the user is on the Registration Page
+  When I enter "<email>"
+  And I enter "<password>"
+  And I enter "<confirmation>"
+  And I click the "Register" button
+  Then an error message should be displayed
+  And the account should not be created
+  And the user should remain on the Registration Page
+
+  Examples:
+    | email     | password            | confirmation        |
+    | abc@      | ValidPassword123    | ValidPassword123     |
