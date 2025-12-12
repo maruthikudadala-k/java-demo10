@@ -2758,3 +2758,402 @@ Scenario Outline: User Registration with Invalid Email Domain
   Examples:
     | email     | password            | confirmation        |
     | abc@      | ValidPassword123    | ValidPassword123     |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in email field
+    And I enter password "<password>" in password field
+    And I enter password "<confirmPassword>" in confirm password field
+    And I click Register button
+    Then I wait for error message to appear
+    And I assert current URL is "https://app.example.com/register"
+    And I assert email field contains "<email>"
+    And I assert password field is not empty
+    And I assert Register button is clicked
+    And I assert error message element is displayed
+    Then I assert error message text equals "Email already exists"
+
+    Examples:
+      | email                      | password          | confirmPassword     |
+      | existing_user@example.com  | ValidPass123!     | ValidPass123!       |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in email field (id="email")
+    And I enter password "<password>" in password field (id="password")
+    And I enter password "<confirmPassword>" in confirm password field (id="confirmPassword")
+    And I click Register button (id="registerBtn")
+    And I wait for error message to appear (id="emailError")
+    Then I assert current URL is "https://app.example.com/register"
+    And I assert email field contains "<email>"
+    And I assert password field is not empty
+    And I assert Register button is clicked
+    And I assert error message element is displayed
+    Then I assert error message text equals "Please enter a valid email address"
+
+    Examples:
+      | email          | password            | confirmPassword      |
+      | invalid-email  | ValidPass123!      | ValidPass123!        |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in email field
+    And I enter password "<password>" in password field
+    And I enter password "<confirmPassword>" in confirm password field
+    And I click Register button
+    Then I wait for error message to appear
+    And I assert current URL is "https://app.example.com/register"
+    And I assert email field contains "<email>"
+    And I assert password field contains "<password>"
+    And I assert confirm password field contains "<confirmPassword>"
+    And I assert Register button is clicked
+    Then I assert error message text equals "Password must contain at least one special character"
+
+    Examples:
+      | email                     | password             | confirmPassword        |
+      | test_user@example.com     | NoSpecialChar123     | NoSpecialChar123       |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in email field
+    And I enter password "<password>" in password field
+    And I enter password "<confirmPassword>" in confirm password field
+    And I click Register button
+    Then I assert current URL is "https://app.example.com/register"
+    And I assert email field contains "<email>"
+    And I assert password field contains "<password>"
+    And I assert confirm password field contains "<confirmPassword>"
+    And I assert Register button is clicked
+    Then I assert error message text equals "Password must be at least 8 characters"
+
+    Examples:
+      | email                     | password | confirmPassword |
+      | test_user@example.com     | short    | short           |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in email field id="email"
+    And I enter password "<password>" in password field id="password"
+    And I enter password "<confirmPassword>" in confirm password field id="confirmPassword"
+    And I click Register button id="registerBtn"
+    Then I wait for confirmation message to appear id="confirmationMsg"
+    Then I assert current URL contains "/confirmation"
+    And I assert email field contains "<email>" using getAttribute("value")
+    And I assert password field is not empty using getAttribute("value")
+    And I assert confirm password field matches password using getAttribute("value")
+    And I assert Register button is clicked and no errors occur
+    Then I assert confirmation message is displayed using isDisplayed()
+
+    Examples:
+      | email                      | password                   | confirmPassword            |
+      | unique_user@example.com    | AnotherSecurePass123!      | AnotherSecurePass123!      |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in email field
+    And I enter password "<password>" in password field
+    And I enter password "<confirmPassword>" in confirm password field
+    And I click Register button
+    Then I wait for error message to appear
+    And I assert current URL is "https://app.example.com/register"
+    And I assert email field contains "<email>"
+    And I assert password field contains "<password>"
+    And I assert confirm password field contains "<confirmPassword>"
+    And I assert Register button is clicked
+    Then I assert error message text equals "Passwords do not match"
+
+    Examples:
+      | email                    | password        | confirmPassword          |
+      | test_user@example.com    | Password123!    | DifferentPassword456!    |
+  Scenario Outline: User Registration Process
+    Given the user navigates to registration URL "https://app.example.com/register"
+    When the user enters email "<email>" in the email field with id "email"
+    And the user enters password "<password>" in the password field with id "password"
+    And the user enters password "<confirmPassword>" in the confirm password field with id "confirmPassword"
+    And the user clicks the Register button with id "registerBtn"
+    And the user waits for the error message to appear with id "emailError"
+    Then the current URL should be "https://app.example.com/register"
+    And the email field should be empty
+    And the password field should not be empty
+    And the Register button should be clicked
+    And the error message element should be displayed
+    And the error message text should equal "Email is required"
+
+    Examples:
+      | email | password         | confirmPassword   |
+      |       | Password123!     | Password123!      |
+  Scenario Outline: User Registration Process
+    When the user navigates to registration URL "<registration_url>"
+    And the user enters email "<email>" in email field
+    And the user enters password "<password>" in password field
+    And the user enters password "<confirm_password>" in confirm password field
+    And the user clicks Register button
+    Then the confirmation message should be displayed
+
+    Examples:
+      | registration_url             | email                    | password          | confirm_password    |
+      | https://app.example.com/register | valid_user@example.com | ValidPass456!    | ValidPass456!       |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in the email field
+    And I enter password "<password>" in the password field
+    And I enter password "<confirmPassword>" in the confirm password field
+    And I click the Register button
+    Then I wait for the error message to appear
+    And I assert current URL is "https://app.example.com/register"
+    And I assert email field contains "<email>"
+    And I assert password field contains "<password>"
+    And I assert confirm password field contains "<confirmPassword>"
+    And I assert Register button is clicked
+    Then I assert error message text equals "Passwords do not match"
+
+    Examples:
+      | email                     | password        | confirmPassword           |
+      | test_user@example.com     | Password123!    | DifferentPassword456!     |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in email field
+    And I enter password "<password>" in password field
+    And I enter password "<confirmPassword>" in confirm password field
+    And I click Register button
+    Then I assert current URL contains "/confirmation"
+    And I assert email field contains "<email>"
+    And I assert password field is not empty
+    And I assert confirm password field matches password
+    And I assert Register button is clicked and no errors occur
+    And I assert confirmation message is displayed
+
+    Examples:
+      | email                     | password              | confirmPassword        |
+      | test_user@example.com     | SecurePass123!       | SecurePass123!        |
+      | invalid-email             | ValidPass123!        | ValidPass123!         |
+      |                          | ValidPass123!        | ValidPass123!         |
+      | test_user@example.com     |                       |                        |
+      | test_user@example.com     | short                 | short                 |
+      | test_user@example.com     | SecurePass123!       | DifferentPass456!     |
+  Scenario Outline: User Registration Process
+    When the user enters email "<email>" in email field (id="email")
+    And the user enters password "<password>" in password field (id="password")
+    And the user enters password "<confirmPassword>" in confirm password field (id="confirmPassword")
+    And the user clicks Register button (id="registerBtn")
+    Then the confirmation message is displayed (id="confirmationMsg")
+
+    Examples:
+      | email                       | password          | confirmPassword     |
+      | test_user+tag@example.com  | SecurePass123!    | SecurePass123!      |
+  Scenario Outline: User Registration Process
+    When the user navigates to registration URL "https://app.example.com/register"
+    And the user enters email "<email>" in the email field with id "email"
+    And the user enters password "<password>" in the password field with id "password"
+    And the user enters password "<confirmPassword>" in the confirm password field with id "confirmPassword"
+    And the user clicks the Register button with id "registerBtn"
+    Then the confirmation message is displayed with id "confirmationMsg"
+
+  Examples: 
+    | email                                                               | password           | confirmPassword     |
+    | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com | SecurePass123! | SecurePass123! |
+  Scenario Outline: User Registration Process
+    When the user enters email "<email>" in the email field
+    And the user enters password "<password>" in the password field
+    And the user enters password "<confirmPassword>" in the confirm password field
+    And the user clicks the Register button
+    Then the confirmation message should be displayed
+
+    Examples:
+      | email                    | password            | confirmPassword       |
+      | Test_User@example.com    | SecurePass123!      | SecurePass123!        |
+  Scenario Outline: User Registration Process
+    When the user navigates to registration URL "https://app.example.com/register"
+    And the user enters email "<email>" in email field
+    And the user enters password "<password>" in password field
+    And the user enters password "<confirmPassword>" in confirm password field
+    And the user clicks Register button
+    Then the confirmation message is displayed
+
+    Examples:
+      | email                     | password           | confirmPassword      |
+      | test.user@example.com     | SecurePass123!     | SecurePass123!       |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in email field
+    And I enter password "<password>" in password field
+    And I enter password "<confirmPassword>" in confirm password field
+    And I click Register button
+    And I wait for confirmation message to appear
+    Then I assert the current URL contains "/confirmation"
+    And I assert email field contains "<email>"
+    And I assert password field is not empty
+    And I assert confirm password field matches password
+    And I assert Register button is clicked and no errors occur
+    And I assert confirmation message is displayed
+
+    Examples:
+      | email                    | password   | confirmPassword |
+      | test_user@example.com    | P@ssw0rd  | P@ssw0rd      |
+  Scenario Outline: User Registration Process
+    Given the user navigates to the registration URL
+    When the user enters email "<email>" in the email field
+    When the user enters password "<password>" in the password field
+    When the user enters password "<confirmPassword>" in the confirm password field
+    When the user clicks the Register button
+    Then the current URL should be "https://app.example.com/register"
+    Then the email field should contain "<email>"
+    Then the password field should be empty
+    Then the Register button should be clicked
+    Then the error message element should be displayed
+    Then the error message text should equal "Password is required"
+
+    Examples:
+      | email                   | password | confirmPassword |
+      | test_user@example.com   |          |                  |
+  Scenario Outline: User Registration Process
+    When the user enters email "<email>" in email field (id="email")
+    And the user enters password "<password>" in password field (id="password")
+    And the user enters password "<confirmPassword>" in confirm password field (id="confirmPassword")
+    And the user clicks Register button (id="registerBtn")
+    Then the current URL contains "/confirmation"
+    And the email field contains "<email>"
+    And the password field is not empty
+    And the confirm password field matches password
+    And the Register button is clicked and no errors occur
+    And the confirmation email is logged as sent to "<email>"
+
+    Examples:
+      | email                   | password        | confirmPassword   |
+      | test_email@example.com  | Password123!    | Password123!      |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in email field 
+    And I enter password "<password>" in password field 
+    And I enter password "<confirmPassword>" in confirm password field 
+    And I click Register button 
+    Then I wait for confirmation message to appear 
+
+    Examples:
+      | email                     | password           | confirmPassword       |
+      | test123_user@example.com  | SecurePass123!     | SecurePass123!        |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in email field (id="email")
+    And I enter password "<password>" in password field (id="password")
+    And I enter password "<confirmPassword>" in confirm password field (id="confirmPassword")
+    And I click Register button (id="registerBtn")
+    Then I wait for error message to appear (id="passwordError")
+    Then I assert current URL is "https://app.example.com/register"
+    And I assert email field contains "<email>"
+    And I assert password field contains "<password>"
+    And I assert confirm password field contains "<confirmPassword>"
+    And I assert Register button is clicked
+    Then I assert error message text equals "Password must contain at least one number"
+
+    Examples:
+      | email                    | password            | confirmPassword      |
+      | test_user@example.com    | NoNumbersHere!      | NoNumbersHere!       |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in email field
+    And I enter password "<password>" in password field
+    And I enter password "<confirmPassword>" in confirm password field
+    And I click Register button
+    Then I assert current URL is "https://app.example.com/register"
+    And I assert email field contains "<email>"
+    And I assert password field is empty
+    And I assert Register button is clicked
+    And I assert error message element is displayed
+    Then I assert error message text equals "<errorMessage>"
+
+    Examples:
+      | email                   | password | confirmPassword | errorMessage             |
+      | test_user@example.com   |          |                  | Password is required      |
+Scenario Outline: User Registration Process
+  When I enter email "<email>" in email field
+  And I enter password "<password>" in password field
+  And I enter password "<confirmPassword>" in confirm password field
+  And I click Register button
+  Then I wait for confirmation message to appear
+
+  Examples:
+    | email                    | password          | confirmPassword     |
+    | test_user@example.com    | SecurePass123!    | SecurePass123!      |
+  Scenario Outline: User Registration Process
+    Given the user navigates to the registration URL <registrationURL>
+    When the user enters email <email> in the email field
+    And the user enters password <password> in the password field
+    And the user enters password <confirmPassword> in the confirm password field
+    And the user clicks the Register button
+    Then the user waits for the error message to appear
+    And the user asserts the error message text equals "Please enter a valid email address"
+
+  Examples:
+    | registrationURL                     | email          | password          | confirmPassword     |
+    | https://app.example.com/register    | invalid-email  | ValidPass123!     | ValidPass123!       |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in email field
+    And I enter password "<password>" in password field
+    And I enter password "<confirmPassword>" in confirm password field
+    And I click Register button
+    And I wait for the error message to appear
+    Then I assert current URL is "https://app.example.com/register"
+    And I assert email field is empty
+    And I assert password field is not empty
+    And I assert Register button is clicked
+    And I assert error message element is displayed
+    Then I assert error message text equals "Email is required"
+
+    Examples:
+      | email | password        | confirmPassword    |
+      |       | Password123!    | Password123!       |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in email field
+    And I enter password "<password>" in password field
+    And I enter password "<confirmPassword>" in confirm password field
+    And I click Register button
+    And I wait for error message to appear
+    Then I assert current URL is "https://app.example.com/register"
+    And I assert email field contains "<email>"
+    And I assert password field contains "<password>"
+    And I assert confirm password field contains "<confirmPassword>"
+    And I assert Register button is clicked
+    Then I assert error message text equals "Password must contain at least one number"
+
+    Examples:
+      | email                   | password            | confirmPassword       |
+      | test_user@example.com   | NoNumbersHere!      | NoNumbersHere!        |
+  Scenario Outline: User Registration Process
+    When the user enters email "<email>" in email field
+    And the user enters password "<password>" in password field
+    And the user enters password "<confirmPassword>" in confirm password field
+    And the user clicks the Register button
+    Then the current URL should be "https://app.example.com/register"
+    And the email field should contain "<email>"
+    And the password field should contain "<password>"
+    And the confirm password field should contain "<confirmPassword>"
+    And the Register button is clicked
+    Then the error message text should equal "Password must be at least 8 characters"
+
+    Examples:
+      | email                     | password | confirmPassword |
+      | test_user@example.com     | short    | short           |
+  Scenario Outline: User Registration Process
+    When the user enters email "<email>" in email field
+    And the user enters password "<password>" in password field
+    And the user enters password "<confirmPassword>" in confirm password field
+    And the user clicks the Register button
+    Then the user waits for the confirmation message to appear
+
+    Examples:
+      | email                   | password            | confirmPassword      |
+      | test-user@example.com   | SecurePass123!      | SecurePass123!       |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in the email field
+    And I enter password "<password>" in the password field
+    And I enter password "<confirmPassword>" in the confirm password field
+    And I click the Register button
+    And I wait for the error message to appear
+    Then I assert the current URL is "https://app.example.com/register"
+    And I assert the email field contains "<email>"
+    And I assert the password field is not empty
+    And I assert the Register button is clicked
+    And I assert the error message element is displayed
+    Then I assert the error message text equals "Email already exists"
+
+    Examples:
+      | email                        | password          | confirmPassword     |
+      | existing_user@example.com    | ValidPass123!     | ValidPass123!       |
+  Scenario Outline: User Registration Process
+    When I enter email "<email>" in email field
+    And I enter password "<password>" in password field
+    And I enter password "<confirmPassword>" in confirm password field
+    And I click Register button
+    Then I wait for error message to appear
+    And I assert current URL is "https://app.example.com/register"
+    And I assert email field contains "<email>"
+    And I assert password field contains "<password>"
+    And I assert confirm password field contains "<confirmPassword>"
+    And I assert error message text equals "Password must contain at least one special character"
+
+    Examples:
+      | email                     | password               | confirmPassword         |
+      | test_user@example.com     | NoSpecialChar123      | NoSpecialChar123        |
